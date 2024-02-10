@@ -1,7 +1,11 @@
 import Button from "./Button/Button";
+import Footer from "./Footer/Footer";
+import Header from "./Header/Header";
 import Logo from "./Logo/Logo";
 
 export {
     Button,
-    Logo
+    Logo,
+    Header,
+    Footer
 }
