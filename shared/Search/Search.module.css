@@ -1,0 +1,9 @@
+.guests {
+    display: flex;
+}
+
+@media screen and (max-width: 650px) {
+    .guests {
+        display: none;
+    }
+}

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Header, Footer } from "@/shared";
+import { MainLayout } from "@/layout";
 import { Inter, Nunito, Roboto, Poppins } from "next/font/google";
 import "./globals.css";
 
@@ -23,9 +23,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        <Header />
-        {children}
-        <Footer />
+        <MainLayout>
+          {children}
+        </MainLayout>
       </body>
     </html>
   );

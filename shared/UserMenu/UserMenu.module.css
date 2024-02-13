@@ -1,0 +1,9 @@
+.mob_view {
+    display: block;
+}
+
+@media screen and (max-width: 650px) {
+    .mob_view {
+        display: none;
+    }
+}

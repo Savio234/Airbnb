@@ -1,8 +1,14 @@
 import React from 'react'
+import { Header, Footer } from '@/shared'
+import { Props } from '@/interface'
 
-const MainLayout = () => {
+const MainLayout = ({children}: Props) => {
   return (
-    <div>MainLayout</div>
+    <div>
+      <Header />
+        {children}
+      <Footer />
+    </div>
   )
 }
 

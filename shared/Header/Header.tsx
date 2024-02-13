@@ -1,5 +1,5 @@
 'use client';
-import { Logo, Search } from '..'
+import { Logo, Search, UserMenu } from '..'
 
 const Header = () => {
   return (
@@ -8,6 +8,7 @@ const Header = () => {
         <div className='flex flex-row items-center gap-4 justify-between md: gap-0'>
           <Logo />
           <Search />
+          <UserMenu />
         </div>
       </div>
     </div>
