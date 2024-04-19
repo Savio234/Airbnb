@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { MainLayout } from "@/layout";
 import { Inter, Nunito, Roboto, Poppins } from "next/font/google";
 import "./globals.css";
 
@@ -23,9 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        <MainLayout>
-          {children}
-        </MainLayout>
+        {children}
       </body>
     </html>
   );
