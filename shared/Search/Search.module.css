@@ -6,4 +6,13 @@
     .guests {
         display: none;
     }
+    .text {
+        font-size: 1.6rem;
+    }
+    .text:nth-child(2), .text:nth-child(3) > .add_guests {
+        display: none;
+    }
+    .wrapper {
+        width: 35rem;
+    }
 }
