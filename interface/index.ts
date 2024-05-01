@@ -10,7 +10,7 @@ export interface MenuItemProps {
 export interface ModalProps {
     isOpen?: boolean
     onClose: () => void
-    onSubmit?: () => void
+    onSubmit: () => void
     secondaryAction?: () => void
     children?: React.ReactNode
     className?: string

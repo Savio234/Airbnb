@@ -6,6 +6,7 @@ import Logo from "./Logo/Logo";
 import MenuItem from "./MenuItem/MenuItem";
 import Search from "./Search/Search";
 import UserMenu from "./UserMenu/UserMenu";
+import ModalElement from "./modalElement/ModalElement";
 
 
 export {
@@ -17,4 +18,5 @@ export {
     UserMenu,
     Avatar,
     MenuItem,
+    ModalElement,
 }
