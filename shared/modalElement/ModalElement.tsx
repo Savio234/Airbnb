@@ -10,15 +10,15 @@ const ModalElement = (props: ModalProps) => {
 	const handleClose = () => {
 		props.onClose();
 	};
-	// const handleClose = useCallback(() => {
-	// 	if (props.disabled) {
-	// 		return ;
-	// 	}
-	// 	setShowModal(false)
-	// 	setTimeout(() => {
-	// 		props.onClose
-	// 	}, 500)
-	// }, [props.disabled, props.onClose])
+	const handleCloseBtn = useCallback(() => {
+		if (props.disabled) {
+			return ;
+		}
+		setShowModal(false)
+		setTimeout(() => {
+			props.onClose
+		}, 500)
+	}, [props.disabled, props.onClose])
 
 	const handleSubmit = useCallback(() => {
 		if (props.disabled) {
@@ -56,6 +56,9 @@ const ModalElement = (props: ModalProps) => {
 							</div>
 						</div>
 						{props.children}
+						<div>
+
+						</div>
 					</div>
 					<div className='flex flex-row items-center gap-4 w-full'>
 
