@@ -25,13 +25,13 @@ const ModalElement = (props: ModalProps) => {
 			return ;
 		}
 		props.onSubmit()
-	}, [props.disabled, props.onSubmit])
+	}, [props])
 	const handleSecondaryAction = useCallback(() => {
 		if (props.disabled || !props.secondaryAction) {
 			return ;
 		}
 		props.secondaryAction()
-	}, [props.disabled, props.secondaryAction])
+	}, [props])
 
 	useEffect(() => {
 		setShowModal(props.isOpen)
@@ -56,12 +56,16 @@ const ModalElement = (props: ModalProps) => {
 							</div>
 						</div>
 						{props.children}
-						<div>
-
+						<div className='flex flex-row items-center gap-[8rem] w-full'>
+							{(props.secondaryAction && props.secondaryLabel) && 
+								<Button disabled={props.disabled} label={props.secondaryLabel} 
+									outline onClick={handleSecondaryAction}  
+								/>
+							}
+							<Button disabled={props.disabled} label={props.actionLabel}
+								onClick={handleSubmit}
+							/>
 						</div>
-					</div>
-					<div className='flex flex-row items-center gap-4 w-full'>
-
 					</div>
 				</div>
 			)}

@@ -29,6 +29,9 @@
 	height: auto;
 	border-radius: 1.6rem;
 	z-index: 100;
+	flex-direction: column;
+	margin: 0 auto;
+	width: 95%;
 }
 .close_btn {
 	display: flex;
@@ -47,7 +50,7 @@
 		padding: 1rem;
 	}
 	.modalbody {
-		width: 100%;
+		width: 95%;
 		padding: 1rem;
 		padding-bottom: 3rem;
 		height: auto;
@@ -55,6 +58,7 @@
 		max-height: 80%;
 		-ms-overflow-style: none;
 		scrollbar-width: none;
+		margin: 0 auto;
 
 	}
 }

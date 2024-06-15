@@ -1,0 +1,18 @@
+.button {
+    position: relative;
+    height: 5.6rem;
+    border-radius: 1.6rem;
+    width: 100%;
+}
+.button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+.button:hover {
+    opacity: 0.8;
+}
+.icon {
+    position: relative;
+    width: 2.4rem;
+    height: 2.4rem;
+}
