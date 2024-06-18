@@ -1,6 +1,6 @@
 'use client';
-import { MenuItemProps } from '@/interface';
 import React from 'react'
+import { MenuItemProps } from '@/interface';
 
 const MenuItem = ({onclick, label}: MenuItemProps) => {
   return (

@@ -2,16 +2,18 @@
 import { useState, useRef, useEffect } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { Avatar, MenuItem } from "..";
+import { RegisterModal, LoginModal } from "../modals";
 import styles from './UserMenu.module.css'
 
 const UserMenu = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false)
+    const [openModal, setOpenModal] = useState<boolean>(false)
+    const [open, setOpen] = useState<boolean>(false)
     const menuRef = useRef<HTMLDivElement>(null);
 	const refNode = menuRef.current;
     const toggleOpen = () => {
         setIsOpen(isOpen => !isOpen)
     }
-
     useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
 			if (refNode && !refNode.contains(event.target as Node)) {
@@ -48,11 +50,13 @@ const UserMenu = () => {
         {isOpen && (
             <div className="absolute rounded-xl shadow-md w-[10vw] bg-white top-16 left-16 text-sm">
                 <div className="flex flex-col cursor-pointer">
-                    <MenuItem onclick={() => {}} label="Login" />
-                    <MenuItem onclick={() => {}} label="Sign Up" />
+                    <MenuItem onclick={() => setOpen(true)} label="Login" />
+                    <MenuItem onclick={() => setOpenModal(true)} label="Sign Up" />
                 </div>
             </div>
         )}
+        <RegisterModal isOpen={openModal} onClose={() => setOpenModal(false)} />
+        <LoginModal isOpen={open} onClose={() => setOpen(false)} />
     </div>
   )
 }
