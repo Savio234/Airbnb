@@ -58,11 +58,11 @@ const ModalElement = (props: ModalProps) => {
 						{props.children}
 						<div className='flex flex-row items-center gap-[8rem] w-full'>
 							{(props.secondaryAction && props.secondaryLabel) && 
-								<Button disabled={props.disabled} label={props.secondaryLabel} 
+								<Button type='submit' disabled={props.disabled} label={props.secondaryLabel} 
 									outline onClick={handleSecondaryAction}  
 								/>
 							}
-							<Button disabled={props.disabled} label={props.actionLabel}
+							<Button type='submit' disabled={props.disabled} label={props.actionLabel}
 								onClick={handleSubmit}
 							/>
 						</div>

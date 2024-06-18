@@ -10,8 +10,9 @@ interface ButtonProps extends React.HTMLProps<HTMLButtonElement> {
   label?: string
   small?: boolean
   icon?: string | any
+  type?: 'button' | 'submit' | 'reset';
 }
-const Button = ({children, disabled, outline, onClick, label, small = false, icon}: ButtonProps) => {
+const Button = ({children, disabled, outline, onClick, label, small = false, icon, type = 'button'}: ButtonProps) => {
   return (
     <button onClick={onClick} disabled={disabled} className={`${styles.button}
         ${outline ? 'bg-white' : 'bg-rose-500'}
