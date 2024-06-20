@@ -17,6 +17,37 @@ img {
 	-moz-osx-font-smoothing: grayscale;
 	text-decoration: none;
 }
+@font-face {
+	font-family: "Satoshi";
+	src: url("/fonts/Satoshi-Regular.woff2");
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Satoshi-500";
+	src: url("/fonts/Satoshi-Medium.woff2");
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Satoshi-700";
+	src: url("/fonts/Satoshi-Bold.woff2");
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Satoshi-900";
+	src: url("/fonts/Satoshi-Black.woff2");
+	font-style: normal;
+	font-weight: 900;
+	font-display: swap;
+}
 
 html {
 	font-size: calc(100vw / 1440 * 10);

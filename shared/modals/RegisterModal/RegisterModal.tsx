@@ -8,7 +8,8 @@ import { AiFillGithub } from 'react-icons/ai';
 import { toast } from "react-toastify";
 import { FcGoogle } from 'react-icons/fc';
 import { RegisterModalProps } from '@/interface/modals';
-import { ModalElement } from '@/shared';
+import { InputField, ModalElement } from '@/shared';
+import styles from './RegisterModal.module.css'
 
 const RegisterModal = ({ isOpen, onClose }: RegisterModalProps) => {
   const [loading, setLoading] = useState<boolean>(false)
@@ -49,7 +50,16 @@ const RegisterModal = ({ isOpen, onClose }: RegisterModalProps) => {
 
   return (
     <ModalElement actionLabel='Continue' isOpen={isOpen} title='Register' onClose={onClose} onSubmit={handleSubmit(handleRegister)}>
+      <div className={styles.modal_content}>
+        <div className={`text-center ${styles.modal_header}`}>
+          <h3 className='text-[2rem] font-bold'>Welcome to Airbnb</h3>
+          <p className='font-light text-neutral-500'>Create an account</p>
+        </div>
 
+        <InputField name='email' register={register} 
+          inputClass={`${errors?.name && styles.error_border}`} 
+        />
+      </div>
     </ModalElement>
   )
 }
