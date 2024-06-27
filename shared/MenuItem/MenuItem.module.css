@@ -1,0 +1,8 @@
+
+
+@media screen and (max-width: 485px) {
+    .menu_item {
+        font-size: 1.6rem;
+        padding: 1.4rem 1.6rem;
+    }
+}
