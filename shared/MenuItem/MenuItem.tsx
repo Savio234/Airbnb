@@ -4,7 +4,7 @@ import { MenuItemProps } from '@/interface';
 
 const MenuItem = ({onclick, label}: MenuItemProps) => {
   return (
-    <div onClick={onclick} className='px-4 py-[1rem] text-[1.2rem] hover: bg-neutral-100 transition semi-bold'>
+    <div onClick={onclick} className='p-[1.6rem] text-[2rem] hover: bg-neutral-100 transition semi-bold'>
       {label}
     </div>
   )

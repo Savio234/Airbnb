@@ -12,7 +12,9 @@
     color: #E41C11;
     margin: -2rem 0 0;
 }
-
+.edit_input {
+    background: transparent;
+}
 .error_border {
     border: 0.1rem solid #E41C11;
 }

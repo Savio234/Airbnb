@@ -13,6 +13,7 @@ import styles from './RegisterModal.module.css'
 
 const RegisterModal = ({ isOpen, onClose }: RegisterModalProps) => {
   const [loading, setLoading] = useState<boolean>(false)
+  const [inputValues, setInputValues] = useState<any>({nameInput: '', passwordInput: '', emailInput: ''})
   const signupSchema = yup.object().shape({
     name: yup.string().required('Full name is required'),
     email: yup.string().required('Email is required'),
@@ -27,6 +28,13 @@ const RegisterModal = ({ isOpen, onClose }: RegisterModalProps) => {
     resolver: yupResolver(signupSchema)
   })
 
+  const handleChange = (e: any) => {
+    setInputValues((prevValues: {}) => ({
+      ...prevValues,
+      [e.target.name]: e.target.value
+    }))
+  }
+
   const handleRegister = async (data: RegisterModalData) => {
     setLoading(true)
     console.log(data);
@@ -37,6 +45,7 @@ const RegisterModal = ({ isOpen, onClose }: RegisterModalProps) => {
       toast.error('An error occured:', error.response.data.error)
     }
     reset();
+    setInputValues({...inputValues, nameInput: '', passwordInput: '', emailInput: ''})
   }
 
   return (
@@ -48,7 +57,7 @@ const RegisterModal = ({ isOpen, onClose }: RegisterModalProps) => {
         </div>
 
         <div>
-          <InputField name='email' label='Email' required 
+          <InputField onChange={handleChange} name='email' label='Email' required 
             placeholder='Enter your email address' register={register('email')} 
             inputClass={`${styles.edit_input} ${errors?.email && styles.error_border}`} 
           />
@@ -56,7 +65,7 @@ const RegisterModal = ({ isOpen, onClose }: RegisterModalProps) => {
         </div>
         
         <div>
-          <InputField name='name' label='Full name' required 
+          <InputField onChange={handleChange} name='name' label='Full name' required 
             placeholder='Enter your name' register={register('name')} 
             inputClass={`${styles.edit_input} ${errors?.name && styles.error_border}`} 
           />
@@ -64,7 +73,7 @@ const RegisterModal = ({ isOpen, onClose }: RegisterModalProps) => {
         </div>
 
         <div>
-          <InputField name='password' type='password' label='Password' isPassword 
+          <InputField onChange={handleChange} name='password' type='password' label='Password' isPassword 
             placeholder='Enter password' register={register('password')} 
             inputClass={`${styles.edit_input} ${errors?.password && styles.error_border}`} 
           />

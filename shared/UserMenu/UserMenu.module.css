@@ -6,4 +6,9 @@
     .mob_view {
         display: none;
     }
+    .dropdown {
+        left: -9rem;
+        top: 6rem;
+        width: 17rem;
+    }
 }

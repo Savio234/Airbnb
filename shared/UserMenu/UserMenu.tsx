@@ -48,7 +48,7 @@ const UserMenu = () => {
             </div>
         </div>
         {isOpen && (
-            <div className="absolute rounded-xl shadow-md w-[10vw] bg-white top-16 left-16 text-sm">
+            <div className={`${styles.dropdown} absolute rounded-xl shadow-md w-[20rem] bg-white top-16 left-[3.5rem] text-sm`}>
                 <div className="flex flex-col cursor-pointer">
                     <MenuItem onclick={() => setOpen(true)} label="Login" />
                     <MenuItem onclick={() => setOpenModal(true)} label="Sign Up" />
