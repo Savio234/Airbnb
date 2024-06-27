@@ -13,15 +13,15 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 	inputClass?: string;
 	formatPrice?: boolean;
 	inputRef?: any;
-	register: UseFormRegister<FieldValues>;
+	register: FieldValues
 	value?: any
-	errors: FieldErrors
-	required?: boolean
+	// errors: FieldErrors
+	// required?: boolean
 	disabled?: boolean
 	type?: string
 }
 
-const InputField = ({ name, type = 'text', errors, required, disabled, label, formatPrice, className, value, inputClass, isPassword, register, inputRef, ...options }: Props) => {
+const InputField = ({ name, type = 'text', disabled, label, formatPrice, className, value, inputClass, isPassword, register, inputRef, ...options }: Props) => {
 	const [inputType, setInputType] = useState<string>(type);
 	const handleShowPassword = () => {
 		if (inputType === 'password') {
@@ -35,9 +35,7 @@ const InputField = ({ name, type = 'text', errors, required, disabled, label, fo
 		<div className={`${styles.input} ${className}`}>
 			{!!label && (
 				<label htmlFor={name}
-					className={`${styles.input_label} ${formatPrice ? 'left-9' : 'left-4'}
-						${errors[name] ? "text-rose-500" : "text-zinc-400"}
-					`}
+					className={`${styles.input_label} ${formatPrice ? 'left-9' : 'left-4'}`}
 				>
 					{label}
 				</label>
@@ -46,17 +44,14 @@ const InputField = ({ name, type = 'text', errors, required, disabled, label, fo
 				<BiDollar size={24} className='text-neutral-700 absolute top-5 left-2' />
 			)}
 
-			<div className={`${styles.input_wrapper} ${inputClass}`}>
-				<input value={value} disabled={disabled} type={inputType} ref={inputRef} {...register} 
-					{...options}
+			<div className={`${styles.input_wrapper}`}>
+				<input value={value} disabled={disabled} type={inputType} ref={inputRef} 
+					{...register} {...options}
 					className={`${inputClass} ${styles.input_field}
-						peer
 						transition 
 						disabled:opacity-60
 						disabled:cursor-not-allowed
 						${formatPrice ? 'pl-9' : 'pl-4'}
-						${errors[name] ? 'border-rose-500' : 'border-neutral-300'}
-						${errors[name] ? 'focus:border-rose-500' : 'focus:border-black'}
 					`}
 				/>
 

@@ -20,12 +20,12 @@ const ModalElement = (props: ModalProps) => {
 		}, 500)
 	}, [props.disabled, props.onClose])
 
-	const handleSubmit = useCallback(() => {
+	const handleSubmit = () => {
 		if (props.disabled) {
 			return ;
 		}
 		props.onSubmit()
-	}, [props])
+	}
 	const handleSecondaryAction = useCallback(() => {
 		if (props.disabled || !props.secondaryAction) {
 			return ;

@@ -8,8 +8,7 @@
 	backdrop-filter: blur(5px);
 	z-index: 5;
 	padding: 15rem 5rem;
-	overflow-x: hidden;
-	overflow-y: auto;
+	overflow: hidden;
 	inset: 0;
 	outline: none;
 	/* -ms-overflow-style: none;
@@ -32,6 +31,7 @@
 	flex-direction: column;
 	margin: 0 auto;
 	width: 75%;
+	overflow-y: auto;
 }
 .close_btn {
 	display: flex;

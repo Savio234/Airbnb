@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import axios from 'axios';
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -18,16 +18,16 @@ const RegisterModal = ({ isOpen, onClose }: RegisterModalProps) => {
     email: yup.string().required('Email is required'),
     password: yup.string().required('Password is required').min(8, 'Must be at least 8 characters')
   })
-  const { register, handleSubmit, formState: { errors } } = useForm<FieldValues>({
-    defaultValues: {
-      name: '',
-      email: '',
-      password: ''
-    },
-    // resolver: yupResolver(signupSchema)
+  const { register, reset, resetField, handleSubmit, formState: { errors } } = useForm({
+    // defaultValues: {
+    //   name: '',
+    //   email: '',
+    //   password: ''
+    // },
+    resolver: yupResolver(signupSchema)
   })
 
-  const handleRegister: SubmitHandler<FieldValues> = async (data: RegisterModalData) => {
+  const handleRegister = async (data: RegisterModalData) => {
     setLoading(true)
     console.log(data);
     try {
@@ -36,16 +36,7 @@ const RegisterModal = ({ isOpen, onClose }: RegisterModalProps) => {
       console.log('API Error', error);
       toast.error('An error occured:', error.response.data.error)
     }
-    // axios.post('api/register', data)
-    //   then(() => {
-    //     onClose()
-    //   })
-    //   .catch((error: any) => {
-    //     console.log('API Error', error);
-    //   })
-    //   .finally(() => {
-    //     setLoading(false)
-    //   })
+    reset();
   }
 
   return (
@@ -56,20 +47,29 @@ const RegisterModal = ({ isOpen, onClose }: RegisterModalProps) => {
           <p className='font-light text-[2rem] text-neutral-500'>Create an account</p>
         </div>
 
-        <InputField name='email' label='Email' errors={errors} required 
-          placeholder='Enter your email address' register={register} 
-          inputClass={`${styles.edit_input} ${errors?.name && styles.error_border}`} 
-        />
+        <div>
+          <InputField name='email' label='Email' required 
+            placeholder='Enter your email address' register={register('email')} 
+            inputClass={`${styles.edit_input} ${errors?.email && styles.error_border}`} 
+          />
+          <p className={styles.error_styles}>{errors?.email?.message}</p>
+        </div>
+        
+        <div>
+          <InputField name='name' label='Full name' required 
+            placeholder='Enter your name' register={register('name')} 
+            inputClass={`${styles.edit_input} ${errors?.name && styles.error_border}`} 
+          />
+          <p className={styles.error_styles}>{errors?.name?.message}</p>
+        </div>
 
-        <InputField name='name' label='Full name' errors={errors} required 
-          placeholder='Enter your name' register={register} 
-          inputClass={`${styles.edit_input} ${errors?.name && styles.error_border}`} 
-        />
-
-        <InputField name='password' type='password' label='Password' errors={errors} required 
-          placeholder='Enter password' register={register} 
-          inputClass={`${styles.edit_input} ${errors?.name && styles.error_border}`} 
-        />
+        <div>
+          <InputField name='password' type='password' label='Password' isPassword 
+            placeholder='Enter password' register={register('password')} 
+            inputClass={`${styles.edit_input} ${errors?.password && styles.error_border}`} 
+          />
+          <p className={styles.error_styles}>{errors?.password?.message}</p>
+        </div>
       </div>
     </ModalElement>
   )
