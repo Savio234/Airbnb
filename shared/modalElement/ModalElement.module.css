@@ -9,7 +9,6 @@
 	z-index: 5;
 	padding: 5rem;
 	overflow: hidden;
-	inset: 0;
 	outline: none;
 	/* -ms-overflow-style: none;
 	scrollbar-width: none; */
@@ -20,7 +19,6 @@
 .modalbody {
 	position: relative;
 	background: #FFF;
-	box-sizing: border-box;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -30,7 +28,7 @@
 	flex-direction: column;
 	margin: 0 auto;
 	width: 75%;
-	overflow: auto;
+	overflow-y: scroll;
 }
 .close_btn {
 	display: flex;

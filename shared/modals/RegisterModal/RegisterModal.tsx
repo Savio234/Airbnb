@@ -10,9 +10,11 @@ import { FcGoogle } from 'react-icons/fc';
 import { RegisterModalData, RegisterModalProps } from '@/interface/modals';
 import { Button, InputField, ModalElement } from '@/shared';
 import styles from './RegisterModal.module.css'
+import { LoginModal }from '..';
 
 const RegisterModal = ({ isOpen, onClose }: RegisterModalProps) => {
   const [loading, setLoading] = useState<boolean>(false)
+  const [openModal, setOpenModal] = useState<boolean>(false)
   const [inputValues, setInputValues] = useState<any>({nameInput: '', passwordInput: '', emailInput: ''})
   const signupSchema = yup.object().shape({
     name: yup.string().required('Full name is required'),
@@ -48,10 +50,23 @@ const RegisterModal = ({ isOpen, onClose }: RegisterModalProps) => {
     reset();
   }
 
+  const LoginModal = () => {
+    onClose()
+    setOpenModal(true)
+  }
+
   
 
   return (
-    <ModalElement footer={footerContent} resetFields={reset} actionLabel='Continue' isOpen={isOpen} title='Register' onClose={onClose} onSubmit={handleSubmit(handleRegister)}>
+    <ModalElement resetFields={reset} isOpen={isOpen} title='Register' onClose={onClose}
+      actionLabel='Continue' onSubmit={handleSubmit(handleRegister)}
+      footer={
+        <FooterContent onClose={LoginModal}
+          openModal={openModal}
+          setOpenModal={setOpenModal}
+        />
+      }
+    >
       <div className={styles.modal_content}>
         <div className={`${styles.modal_header}`}>
           <h3 className='xl: text-[3.2rem] font-bold md: text-[2.4rem]'>Welcome to Airbnb</h3>
@@ -88,9 +103,24 @@ const RegisterModal = ({ isOpen, onClose }: RegisterModalProps) => {
 
 export default RegisterModal
 
-export const footerContent = (
-  <div className={`mt-[3rem] flex flex-col gap-4 w-full`}>
-    <Button iconClass='absolute left-[-10rem] top-[-0.25rem]' icon={FcGoogle} label='Continue with Google' onClick={() => {}} outline />
-    <Button iconClass='absolute left-[-10rem] top-[-0.25rem]' icon={AiFillGithub} label='Continue with Github' onClick={() => {}} outline />
-  </div>
-)
+export const FooterContent = ({onClose, openModal, setOpenModal}: any) => {
+  return (
+    <div className={`mt-[3rem] mb-[4rem] flex flex-col gap-4 w-full`}>
+      <Button iconClass='absolute left-[-10rem] top-[-0.25rem]' icon={FcGoogle} 
+        label='Continue with Google' onClick={() => {}} outline 
+      />
+      <Button iconClass='absolute left-[-10rem] top-[-0.25rem]' icon={AiFillGithub} 
+        label='Continue with Github' onClick={() => {}} outline 
+      />
+      <div className={`text-neutral-500 text-center mt-[2rem] font-light`}>
+        <div className='flex items-center justify-center gap-[2rem]'>
+          <div>Already have an account?</div>
+          <div onClick={onClose} className='text-neutral-800 cursor-pointer hover:underline'>
+            Log in
+          </div>
+        </div>
+      </div>
+      {/* <LoginModal isOpen={openModal} onClose={() => setOpenModal(false)} /> */}
+    </div>
+  )
+}

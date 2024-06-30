@@ -9,7 +9,7 @@ const ModalElement = (props: ModalProps) => {
 	const [showModal, setShowModal] = useState(props.isOpen)
 	const handleClose = () => {
 		props.onClose();
-		props.resetFields();
+		{props.resetFields && props.resetFields();}
 	};
 	const handleCloseBtn = useCallback(() => {
 		if (props.disabled) {

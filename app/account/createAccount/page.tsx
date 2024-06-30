@@ -1,6 +1,6 @@
 
 
-export default function Favourite() {
+export default function CreateAccount() {
     return (
         <h1 className="text-rose-500 text-center text-5xl">
             Favourite page
