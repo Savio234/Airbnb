@@ -18,6 +18,7 @@ export interface ModalProps {
     actionLabel?: string
     secondaryLabel?: string
     title?: string
-    footer?: React.ReactElement
+    footer?: React.ReactNode
+    resetFields?: any
 
 }

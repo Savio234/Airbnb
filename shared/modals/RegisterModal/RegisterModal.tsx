@@ -1,14 +1,14 @@
 'use client';
-import React, { useState, useCallback, useEffect } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios';
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { AiFillGithub } from 'react-icons/ai';
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import { FcGoogle } from 'react-icons/fc';
 import { RegisterModalData, RegisterModalProps } from '@/interface/modals';
-import { InputField, ModalElement } from '@/shared';
+import { Button, InputField, ModalElement } from '@/shared';
 import styles from './RegisterModal.module.css'
 
 const RegisterModal = ({ isOpen, onClose }: RegisterModalProps) => {
@@ -19,7 +19,7 @@ const RegisterModal = ({ isOpen, onClose }: RegisterModalProps) => {
     email: yup.string().required('Email is required'),
     password: yup.string().required('Password is required').min(8, 'Must be at least 8 characters')
   })
-  const { register, reset, resetField, handleSubmit, formState: { errors } } = useForm({
+  const { register, reset, resetField, watch, handleSubmit, formState: { errors } } = useForm({
     // defaultValues: {
     //   name: '',
     //   email: '',
@@ -38,18 +38,20 @@ const RegisterModal = ({ isOpen, onClose }: RegisterModalProps) => {
   const handleRegister = async (data: RegisterModalData) => {
     setLoading(true)
     console.log(data);
+    
     try {
       const response = await axios.post('api/register', data)
+      setInputValues({...inputValues, email: '', name: '', password: ''})
     } catch (error: (string | any)) {
-      console.log('API Error', error);
-      toast.error('An error occured:', error.response.data.error)
+      toast.error(`An error occured: ${error?.message}`)
     }
     reset();
-    setInputValues({...inputValues, nameInput: '', passwordInput: '', emailInput: ''})
   }
 
+  
+
   return (
-    <ModalElement actionLabel='Continue' isOpen={isOpen} title='Register' onClose={onClose} onSubmit={handleSubmit(handleRegister)}>
+    <ModalElement footer={footerContent} resetFields={reset} actionLabel='Continue' isOpen={isOpen} title='Register' onClose={onClose} onSubmit={handleSubmit(handleRegister)}>
       <div className={styles.modal_content}>
         <div className={`${styles.modal_header}`}>
           <h3 className='xl: text-[3.2rem] font-bold md: text-[2.4rem]'>Welcome to Airbnb</h3>
@@ -85,3 +87,10 @@ const RegisterModal = ({ isOpen, onClose }: RegisterModalProps) => {
 }
 
 export default RegisterModal
+
+export const footerContent = (
+  <div className={`mt-[3rem] flex flex-col gap-4 w-full`}>
+    <Button iconClass='absolute left-[-10rem] top-[-0.25rem]' icon={FcGoogle} label='Continue with Google' onClick={() => {}} outline />
+    <Button iconClass='absolute left-[-10rem] top-[-0.25rem]' icon={AiFillGithub} label='Continue with Github' onClick={() => {}} outline />
+  </div>
+)

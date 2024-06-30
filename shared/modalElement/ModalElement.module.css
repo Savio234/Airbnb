@@ -7,7 +7,7 @@
 	background: rgba(0, 0, 0, 0.6);
 	backdrop-filter: blur(5px);
 	z-index: 5;
-	padding: 15rem 5rem;
+	padding: 5rem;
 	overflow: hidden;
 	inset: 0;
 	outline: none;
@@ -19,7 +19,7 @@
 }
 .modalbody {
 	position: relative;
-	background: #fffaf1;
+	background: #FFF;
 	box-sizing: border-box;
 	display: flex;
 	justify-content: center;
@@ -27,11 +27,10 @@
 	padding: 3rem 5rem;
 	height: auto;
 	border-radius: 1.6rem;
-	/* z-index: 100; */
 	flex-direction: column;
 	margin: 0 auto;
 	width: 75%;
-	overflow-y: auto;
+	overflow: auto;
 }
 .close_btn {
 	display: flex;
@@ -59,8 +58,7 @@
 		width: 95%;
 		padding: 3rem 1.5rem 0;
 		height: 100%;
-		overflow-y: visible;
-		max-height: 90%;
+		max-height: 95%;
 		-ms-overflow-style: none;
 		scrollbar-width: none;
 		margin: 3rem auto 0;

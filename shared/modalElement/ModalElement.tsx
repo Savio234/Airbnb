@@ -9,6 +9,7 @@ const ModalElement = (props: ModalProps) => {
 	const [showModal, setShowModal] = useState(props.isOpen)
 	const handleClose = () => {
 		props.onClose();
+		props.resetFields();
 	};
 	const handleCloseBtn = useCallback(() => {
 		if (props.disabled) {
@@ -24,7 +25,7 @@ const ModalElement = (props: ModalProps) => {
 		if (props.disabled) {
 			return ;
 		}
-		props.onSubmit()
+		props.onSubmit();
 	}
 	const handleSecondaryAction = useCallback(() => {
 		if (props.disabled || !props.secondaryAction) {
@@ -68,6 +69,7 @@ const ModalElement = (props: ModalProps) => {
 								onClick={handleSubmit}
 							/>
 						</div>
+						{props.footer && props.footer}
 					</div>
 				</div>
 			)}
