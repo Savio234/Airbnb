@@ -1,4 +1,6 @@
-
+.menu_item {
+    font-family: 'Satoshi-500';
+}
 
 @media screen and (max-width: 485px) {
     .menu_item {
