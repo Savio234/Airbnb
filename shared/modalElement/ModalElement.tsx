@@ -49,8 +49,10 @@ const ModalElement = (props: ModalProps) => {
 			{props.isOpen && (
 				<div className={`${styles.overlay}`} onClick={handleClose}>
 					<div className={`${styles.modalbody}`} onClick={(e) => e.stopPropagation()}>
-						<div className='flex items-center pt-6 pl-6 pr-6 mb-6 rounded-t justify-center w-full relative border-b-[0.1rem]'>
-							<h3 className='text-[3rem] font-semibold'>{props.title}</h3>
+						<div className='xl: flex items-center pt-6 pl-6 pr-6 mb-6 rounded-t 
+							justify-center w-full relative border-b-[0.1rem] 
+							md: justify-between mt-[-2rem] mb-[2.5rem]'>
+							<h3 className='xl:text-[3rem] font-semibold md: text-[2.4rem]'>{props.title}</h3>
 							<div onClick={handleClose} className={styles.close_btn}>
 								<IoMdClose size={36} />
 							</div>
