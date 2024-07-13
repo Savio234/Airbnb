@@ -1,9 +1,11 @@
+'use client';
 import React from 'react'
+import { SignUp } from '@/components'
 
 const SignUpView = () => {
   return (
-    <div>SignUpView</div>
+    <SignUp />
   )
 }
 
-export default SignUpView
+export default SignUpView;
