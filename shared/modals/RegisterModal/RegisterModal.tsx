@@ -10,7 +10,6 @@ import { FcGoogle } from 'react-icons/fc';
 import { RegisterModalData, RegisterModalProps } from '@/interface/modals';
 import { Button, InputField, ModalElement } from '@/shared';
 import styles from './RegisterModal.module.css'
-import { LoginModal }from '..';
 
 const RegisterModal = ({ isOpen, onClose }: RegisterModalProps) => {
   const [loading, setLoading] = useState<boolean>(false)
@@ -18,16 +17,11 @@ const RegisterModal = ({ isOpen, onClose }: RegisterModalProps) => {
   const [inputValues, setInputValues] = useState<any>({nameInput: '', passwordInput: '', emailInput: ''})
   const signupSchema = yup.object().shape({
     name: yup.string().required('Full name is required'),
-    email: yup.string().required('Email is required'),
+    email: yup.string().email('Invalid email address').required('Email is required'),
     password: yup.string().required('Password is required').min(8, 'Must be at least 8 characters')
   })
   const { register, reset, resetField, watch, handleSubmit, formState: { errors } } = useForm({
-    // defaultValues: {
-    //   name: '',
-    //   email: '',
-    //   password: ''
-    // },
-    resolver: yupResolver(signupSchema)
+    resolver: yupResolver(signupSchema),
   })
 
   const handleChange = (e: any) => {
@@ -120,7 +114,6 @@ export const FooterContent = ({onClose, openModal, setOpenModal}: any) => {
           </div>
         </div>
       </div>
-      {/* <LoginModal isOpen={openModal} onClose={() => setOpenModal(false)} /> */}
     </div>
   )
 }

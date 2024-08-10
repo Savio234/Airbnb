@@ -13,7 +13,7 @@
 	align-items: center;
 	width: 100%;
 	background-color: #FFFAF1;
-	padding: 4rem 6.4rem;
+	padding: 2rem 6.4rem 4rem;
 	padding-bottom: 8rem;
 	border-radius: 1.6rem;
 }
@@ -21,7 +21,7 @@
 @media screen and (max-width: 650px) {
 	.auth_layout {
 		padding-bottom: 0;
-		padding: 4rem 2rem;		
+		padding: 4rem 2rem;	
 	}
 	.auth_container {
 		padding: 1rem;

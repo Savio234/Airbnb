@@ -4,16 +4,17 @@ import styles from './Button.module.css'
 interface ButtonProps extends React.HTMLProps<HTMLButtonElement> {
   disabled?: boolean
   outline?: boolean
-  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
   label?: string
   small?: boolean
   icon?: any
   iconClass?: string
+  className?: string
   type?: 'button' | 'submit' | 'reset';
 }
-const Button = ({ disabled, outline, iconClass, onClick, label, small = false, icon: Icon, type = 'button'}: ButtonProps) => {
+const Button = ({ disabled, outline, className, iconClass, onClick, label, small = false, icon: Icon, type = 'button'}: ButtonProps) => {
   return (
-    <button onClick={onClick} disabled={disabled} className={`${styles.button}
+    <button type={type} onClick={onClick} disabled={disabled} className={`${className} ${styles.button}
       ${outline ? 'bg-white' : 'bg-rose-500'}
       ${outline ? 'border-black' : 'border-rose-500'}
       ${outline ? 'text-black' : 'text-white'}
