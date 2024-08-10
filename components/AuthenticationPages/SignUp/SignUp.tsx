@@ -44,40 +44,41 @@ const SignUp = () => {
           <p className='xl: font-light text-[2rem] text-neutral-500 md: text-[1.8rem]'>Create an account</p>
         </div>
 
-        <div className={styles.input_field}>
-          <InputField onChange={handleChange} name='email' label='Email' required 
-            placeholder='Enter your email address' register={register('email')} 
-            inputClass={`${styles.edit_input} ${errors?.email && styles.error_border}`} 
-          />
-          <p className={styles.error_styles}>{errors?.email?.message}</p>
-        </div>
-        
-        <div className={styles.input_field}>
-          <InputField onChange={handleChange} name='name' label='Full name' required 
-            placeholder='Enter your name' register={register('name')} 
-            inputClass={`${styles.edit_input} ${errors?.name && styles.error_border}`} 
-          />
-          <p className={styles.error_styles}>{errors?.name?.message}</p>
-        </div>
+        <form onSubmit={handleSubmit(handleRegister)}>
+          <div className={styles.input_field}>
+            <InputField onChange={handleChange} name='email' label='Email' required 
+              placeholder='Enter your email address' register={register('email')} 
+              inputClass={`${styles.edit_input} ${errors?.email && styles.error_border}`} 
+            />
+            <p className={styles.error_styles}>{errors?.email?.message}</p>
+          </div>
+          
+          <div className={styles.input_field}>
+            <InputField onChange={handleChange} name='name' label='Full name' required 
+              placeholder='Enter your name' register={register('name')} 
+              inputClass={`${styles.edit_input} ${errors?.name && styles.error_border}`} 
+            />
+            <p className={styles.error_styles}>{errors?.name?.message}</p>
+          </div>
 
-        <div className={styles.input_field}>
-          <InputField onChange={handleChange} name='password' type='password' label='Password' isPassword 
-            placeholder='Enter password' register={register('password')} 
-            inputClass={`${styles.edit_input} ${errors?.password && styles.error_border}`} 
-          />
-          <p className={styles.error_styles}>{errors?.password?.message}</p>
-        </div>
+          <div className={styles.input_field}>
+            <InputField onChange={handleChange} name='password' type='password' label='Password' isPassword 
+              placeholder='Enter password' register={register('password')} 
+              inputClass={`${styles.edit_input} ${errors?.password && styles.error_border}`} 
+            />
+            <p className={styles.error_styles}>{errors?.password?.message}</p>
+          </div>
 
-        <div className={styles.btns}>
-          <Button type='submit' label='Sign Up' className={styles.sign_up_btn} />
-
-          <Button className={styles.google_btn} iconClass='absolute left-[-10rem] top-[-0.25rem]' icon={FcGoogle} 
-            label='Continue with Google' onClick={() => {}} outline 
-          />
-          <Button className={styles.github_btn} iconClass='absolute left-[-10rem] top-[-0.25rem]' icon={AiFillGithub} 
-            label='Continue with Github' onClick={() => {}} outline 
-          />
-        </div>
+          <div className={styles.btns}>
+            <Button type='submit' label='Sign Up' className={styles.sign_up_btn} />
+            <Button className={styles.google_btn} iconClass='absolute left-[-10rem] top-[-0.25rem]' icon={FcGoogle} 
+              label='Continue with Google' onClick={() => {}} outline 
+            />
+            <Button className={styles.github_btn} iconClass='absolute left-[-10rem] top-[-0.25rem]' icon={AiFillGithub} 
+              label='Continue with Github' onClick={() => {}} outline 
+            />
+          </div>
+        </form>
       </div>
 
       <div className={styles.signIn_text_mobile}>
