@@ -48,9 +48,10 @@
 	height: 100%;
 	font-size: 1.6rem;
 	line-height: 2.4rem;
-	font-family: "Satoshi-900";
+	font-family: "Satoshi-700";
 	color: #0A0A0A;
 	width: 100%;
+	background: none;
 }
 .input_field::placeholder {
 	font-size: 1.6rem;
@@ -83,4 +84,27 @@
 	display: flex;
 	align-items: center;
 	gap: 2.4rem;
+}
+
+
+@media screen and (max-width: 650px) {
+	.input_label {
+		font-size: 1.6rem;
+		line-height: 2rem;
+	}
+	.input_field::placeholder {
+		font-size: 1.2rem;
+		line-height: 1.6rem;
+	}
+	.icon {
+		width: 1.6rem;
+		height: 1.6rem;
+	}
+	.input_wrapper {
+		padding: 1.6rem;
+	}
+	.input_field {
+		font-size: 1.4rem;
+		line-height: 1.6rem;
+	}
 }

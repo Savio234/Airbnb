@@ -1,12 +1,10 @@
 'use client';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import { AiFillGithub } from 'react-icons/ai';
 import { toast } from "react-hot-toast";
-import { FcGoogle } from 'react-icons/fc';
 import { RegisterModalData } from '@/interface/modals';
 
 const useRegisterModal = () => {
@@ -16,7 +14,7 @@ const useRegisterModal = () => {
     password: yup.string().required('Password is required').min(8, 'Must be at least 8 characters')
   })
 
-  const { register, reset, resetField, watch, handleSubmit, formState: { errors } } = useForm({
+  const { register, reset, watch, resetField, handleSubmit, setValue, clearErrors, formState: { errors } } = useForm({
     resolver: yupResolver(signupSchema),
   })
 

@@ -67,7 +67,7 @@
     margin: -2rem 0 0;
 }
 .edit_input {
-    background: transparent;
+    background: none;
     font-size: 1.8rem;
     line-height: 2.7rem;
 }

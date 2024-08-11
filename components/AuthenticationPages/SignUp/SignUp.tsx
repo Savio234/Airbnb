@@ -10,7 +10,6 @@ import { AiFillGithub } from 'react-icons/ai';
 
 
 const SignUp = () => {
-
   const [inputValues, setInputValues] = useState<any>({nameInput: '', 
     passwordInput: '', emailInput: ''}
   )
