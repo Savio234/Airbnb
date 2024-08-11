@@ -62,7 +62,7 @@ html::-webkit-scrollbar {
   display: none;
 }
 body {
-  background: #FFF;
+  background: #FFFAF1;
   color: #000;
   line-height: 1.5;
   font-size: 1.6rem;

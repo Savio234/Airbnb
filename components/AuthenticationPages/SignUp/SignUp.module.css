@@ -13,7 +13,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin-bottom: 2.4rem;
+    margin: -6rem 0 2.4rem;
 }
 .signIn_text {
     display: flex;
@@ -56,7 +56,7 @@
     gap: 1.6rem;
     width: 100%;
 }
-.input_field input {
+.input_field input, .form, .btns button {
     width: 100%;
 }
 .error_styles {
@@ -86,14 +86,17 @@
     gap: 1.6rem;
     width: 100%;
 }
-.btns button {
-    width: 100%;
-}
 .sign_up_btn {
     margin-bottom: 2rem;
 }
 .signIn_text_mobile {
     display: none;
+}
+
+@media screen and (max-width: 1023px) {
+    .sign_in_container {
+        margin-top: 2rem;
+    }
 }
 
 
@@ -102,7 +105,7 @@
         display: none;
     }
     .signIn_text {
-        margin: -2rem 0 2.4rem;
+        margin: -2rem 0 4.8rem;
     }
     .signIn_text_mobile {
         display: block;
@@ -114,5 +117,8 @@
     }
     .sign_in_body {
         width: 100%;
+    }
+    .sign_in_container {
+        margin-top: 0;
     }
 }

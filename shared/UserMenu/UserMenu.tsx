@@ -4,8 +4,10 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { Avatar, MenuItem } from "..";
 import { RegisterModal, LoginModal } from "../modals";
 import styles from './UserMenu.module.css'
+import { useRouter } from "next/navigation";
 
 const UserMenu = () => {
+    const router = useRouter()
     const [isOpen, setIsOpen] = useState<boolean>(false)
     const [openModal, setOpenModal] = useState<boolean>(false)
     const [open, setOpen] = useState<boolean>(false)
@@ -51,7 +53,7 @@ const UserMenu = () => {
             <div className={`${styles.dropdown} absolute rounded-xl shadow-md w-[20rem] bg-white top-16 left-[3.5rem] text-sm`}>
                 <div className="flex flex-col cursor-pointer">
                     <MenuItem onclick={() => setOpen(true)} label="Login" />
-                    <MenuItem onclick={() => setOpenModal(true)} label="Sign Up" />
+                    <MenuItem onclick={() => router.push('/create-account')} label="Sign Up" />
                 </div>
             </div>
         )}
