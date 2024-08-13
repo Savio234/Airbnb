@@ -5,9 +5,9 @@ import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { toast } from "react-hot-toast";
-import { RegisterModalData } from '@/interface/modals';
+import { SignUpData } from '@/interface/auth';
 
-const useRegisterModal = () => {
+const useValidateSignUp = () => {
   const signupSchema = yup.object().shape({
     name: yup.string().required('Full name is required'),
     email: yup.string().email('Invalid email address').required('Email is required'),
@@ -20,7 +20,7 @@ const useRegisterModal = () => {
 
   const [data, setData] = useState<any>()
 
-  const handleRegister = async (data: RegisterModalData) => {
+  const handleRegister = async (data: SignUpData) => {
     console.log(data);
     
     try {
@@ -42,4 +42,4 @@ const useRegisterModal = () => {
   }
 }
 
-export default useRegisterModal
+export default useValidateSignUp

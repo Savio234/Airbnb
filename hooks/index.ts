@@ -1,6 +1,7 @@
-import useRegisterModal from "./useRegisterModal"
-
+import useValidateSignUp from "./useValidateSignUp"
+import useValidateLogin from "./useValidateLogin"
 
 export {
-    useRegisterModal,
+    useValidateSignUp,
+    useValidateLogin,
 }

@@ -1,25 +1,27 @@
 import NextAuth from "next-auth";
+import { AuthOptions } from "next-auth";
 import Google from "next-auth/providers/google"
 import GitHub from "next-auth/providers/github"
 import CredentialsProvider from "next-auth/providers/credentials"
-import { PrismaAdapter } from "@auth/prisma-adapter";
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client";
 import bcrypt from 'bcrypt'
  
 const prisma = new PrismaClient();
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
+    // export const authOptions: AuthOptions = {
     adapter: PrismaAdapter(prisma),
     providers: [ 
-        Google, GitHub,
-        // Google({
-        //     clientId: process.env.GITHUB_ID as string,
-        //     clientSecret: process.env.GITHUB_SECRET as string
-        // }), 
-        // GitHub({
-        //     clientId: process.env.GITHUB_ID as string,
-        //     clientSecret: process.env.GITHUB_SECRET as string
-        // }),
+        // Google, GitHub,
+        Google({
+            clientId: process.env.GITHUB_ID as string,
+            clientSecret: process.env.GITHUB_SECRET as string
+        }), 
+        GitHub({
+            clientId: process.env.GITHUB_ID as string,
+            clientSecret: process.env.GITHUB_SECRET as string
+        }),
         CredentialsProvider({
             credentials: {
                 email: { label: 'email', type: 'text' },
@@ -55,7 +57,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         })
     ],
     pages: {
-        signIn: '/create-account'
+        signIn: '/login'
     },
     debug: process.env.NODE_ENV === 'development',
     session: {

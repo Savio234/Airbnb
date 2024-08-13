@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import styles from './SignUp.module.css'
 import { Button, InputField } from '@/shared';
-import { useRegisterModal } from '@/hooks';
+import { useValidateSignUp } from '@/hooks';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FcGoogle } from 'react-icons/fc';
@@ -13,7 +13,7 @@ const SignUp = () => {
   const [inputValues, setInputValues] = useState<any>({nameInput: '', 
     passwordInput: '', emailInput: ''}
   )
-  const { errors, register, handleRegister, handleSubmit, data } = useRegisterModal()
+  const { errors, register, handleRegister, handleSubmit, data } = useValidateSignUp()
 
   const handleChange = (e: any) => {
     setInputValues((prevValues: {}) => ({

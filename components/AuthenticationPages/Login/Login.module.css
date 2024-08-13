@@ -1,0 +1,124 @@
+.sign_in_body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    width: 60%;
+    margin: 0 auto 2.4rem;
+    align-items: center;
+}
+.header p, .header h3 {
+    text-align: center;
+}
+.sign_in_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: -6rem 0 2.4rem;
+}
+.signIn_text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 2.4rem;
+}
+.back_to_home {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+}
+.back_to_home .icon {
+    width: 2.4rem;
+    height: 2.4rem;
+    position: relative;
+}
+.back_to_home h3 {
+    font-family: 'Satoshi-900';
+    color: #E41C11;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+}
+.signIn_text p {
+    font-family: 'Satoshi';
+    color: #4F4F4F;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+}
+.signIn_text a {
+    color: #E41C11;
+    font-family: 'Satoshi-700';
+    margin-left: 0.8rem;
+}
+.input_field {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    width: 100%;
+}
+.input_field input, .form, .btns button {
+    width: 100%;
+}
+.error_styles {
+    font-size: 1.4rem;
+    line-height: 2rem;
+    font-family: 'Satoshi-500';
+    color: #E41C11;
+    margin: -2rem 0 0;
+}
+.edit_input {
+    background: none;
+    font-size: 1.8rem;
+    line-height: 2.7rem;
+}
+.edit_input::placeholder {
+    font-family: 'Satoshi';
+}
+.edit_input:focus {
+    border: 0;
+}
+.error_border {
+    border: 0.1rem solid #E41C11;
+}
+.btns {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    width: 100%;
+}
+.sign_up_btn {
+    margin-bottom: 2rem;
+}
+.signIn_text_mobile {
+    display: none;
+}
+
+@media screen and (max-width: 1023px) {
+    .sign_in_container {
+        margin-top: 2rem;
+    }
+}
+
+
+@media screen and (max-width: 650px) {
+    .signIn_text p {
+        display: none;
+    }
+    .signIn_text {
+        margin: -2rem 0 4.8rem;
+    }
+    .signIn_text_mobile {
+        display: block;
+        text-align: center;
+    }
+    .signIn_text_mobile a {
+        color: #E41C11;
+        font-weight: 900;
+    }
+    .sign_in_body {
+        width: 100%;
+    }
+    .sign_in_container {
+        margin-top: 0;
+    }
+}
