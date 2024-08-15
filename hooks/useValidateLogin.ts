@@ -26,22 +26,22 @@ const useValidateLogin = () => {
 
   const handleLogin = async (data: LoginData) => {
     console.log(data);
-    // signIn('credentials', {
-    //   ...data,
-    //   redirect: false,
-    // })
-    // .then((response: any) => {
-    //   console.log(data);
-    //   if (response?.ok) {
-    //     toast.success('Login successful...');
-    //     router.refresh();
-    //     router.push('/');
-    //   }
+    signIn('credentials', {
+      ...data,
+      redirect: false,
+    })
+    .then((response: any) => {
+      console.log(data);
+      if (response?.ok) {
+        toast.success('Login successful...');
+        router.refresh();
+        router.push('/');
+      }
 
-    //   if (response?.error) {
-    //     toast.error(response?.error)
-    //   }
-    // })
+      if (response?.error) {
+        toast.error(response?.error)
+      }
+    })
     // I'm currently experiencing an error in my next js project that says: "Module parse failed: You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file". This error occurs when I try to use the signIn from NextAuth (which is in my auth.ts file) in a handleLogin function in my useValidateLogin hook. What's the cause of this error and how can it be resolved
     reset();
   }
