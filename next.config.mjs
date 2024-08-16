@@ -1,7 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     webpack: (config, { isServer }) => {
-        // Adjust your Webpack configuration here if necessary
+        if(!isServer) {
+            config.resolve = {
+                ...config.resolve,
+                fallback: {
+                    fs: false
+                }
+            }
+        }
         return config;
     },
 };
