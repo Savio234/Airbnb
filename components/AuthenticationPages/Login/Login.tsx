@@ -11,7 +11,7 @@ import styles from './Login.module.css'
 const Login = () => {
 
   const [inputValues, setInputValues] = useState<any>({passwordInput: '', emailInput: ''})
-  const { errors, register, handleLogin, handleSubmit,  } = useValidateLogin()
+  const { errors, register, handleLogin, handleSubmit } = useValidateLogin()
   const handleChange = (e: any) => {
     setInputValues((prevValues: any) => ({
       ...prevValues,

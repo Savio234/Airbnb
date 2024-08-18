@@ -6,8 +6,12 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { toast } from "react-hot-toast";
 import { SignUpData } from '@/interface/auth';
+import { useRouter } from 'next/navigation';
 
 const useValidateSignUp = () => {
+
+  const router = useRouter()
+
   const signupSchema = yup.object().shape({
     name: yup.string().required('Full name is required'),
     email: yup.string().email('Invalid email address').required('Email is required'),
@@ -26,6 +30,7 @@ const useValidateSignUp = () => {
     try {
       const response = await axios.post('api/register', data)
       setData(response?.data)
+      router.push('/login')
     } catch (error: (string | any)) {
       toast.error(`An error occured: ${error?.message}`)
     }

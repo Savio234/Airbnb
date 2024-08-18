@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        <Toaster position="top-center" />
+        <Toaster position="top-right" />
         {children}
       </body>
     </html>
