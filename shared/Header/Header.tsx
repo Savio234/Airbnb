@@ -1,4 +1,3 @@
-'use client';
 import { Logo, Search, UserMenu } from '..'
 import styles from './Header.module.css'
 

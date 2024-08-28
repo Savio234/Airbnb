@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Nunito, Roboto, Poppins } from "next/font/google";
-import { ToastContainer } from "react-toastify";
 import { Toaster } from 'react-hot-toast';
+import { AppProvider } from "@/contexts/AppContext";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -24,8 +24,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        <Toaster position="top-right" />
-        {children}
+        <AppProvider>
+          <Toaster position="top-right" />
+          {children}
+        </AppProvider>
       </body>
     </html>
   );

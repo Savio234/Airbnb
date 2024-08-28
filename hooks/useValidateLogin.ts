@@ -24,22 +24,6 @@ const useValidateLogin = () => {
 
   const handleLogin = async (data: LoginData) => {
     console.log(data);
-    // signIn('credentials', {
-    //   ...data,
-    //   redirect: false,
-    // })
-    // .then((response: any) => {
-    //   console.log(data);
-    //   if (response?.ok) {
-    //     toast.success('Login successful...');
-    //     // router.refresh();
-    //     // router.push('/');
-    //   }
-
-    //   if (response?.error) {
-    //     toast.error(response?.error)
-    //   }
-    // })
     try {
       const response = await axios.post('api/login', {
         email: data.email,

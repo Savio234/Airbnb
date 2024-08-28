@@ -9,13 +9,12 @@ import argon2 from 'argon2'
 const prisma = new PrismaClient();
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
-    // export const authOptions: AuthOptions = {
     adapter: PrismaAdapter(prisma),
     providers: [ 
         Google, GitHub,
         // Google({
-        //     clientId: process.env.GITHUB_ID as string,
-        //     clientSecret: process.env.GITHUB_SECRET as string
+        //     clientId: process.env.G00GLE_ID as string,
+        //     clientSecret: process.env.GOOGLE_SECRET as string
         // }), 
         // GitHub({
         //     clientId: process.env.GITHUB_ID as string,
@@ -37,7 +36,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
                     }
                 })
 
-                // if (!user || (user.hashedPassword || typeof user?.hashedPassword !== 'string' || Buffer)) {
                 if (!user || !user?.hashedPassword) {
                     throw new Error('Invalid credentials')
                 }

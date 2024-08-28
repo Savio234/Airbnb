@@ -3,11 +3,16 @@ import { useState, useRef, useEffect } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { Avatar, MenuItem } from "..";
 import { RegisterModal, LoginModal } from "../modals";
-import styles from './UserMenu.module.css'
 import { useRouter } from "next/navigation";
+import { useValidateLogout } from "@/hooks";
+import styles from './UserMenu.module.css'
+import { getCurrentUser } from "@/app/actions";
 
 const UserMenu = () => {
-    const router = useRouter()
+    // const currentUser = await getCurrentUser();
+    const [user, setUser] = useState<any>()
+    const { handleLogout } = useValidateLogout();
+    const router = useRouter();
     const [isOpen, setIsOpen] = useState<boolean>(false)
     const [openModal, setOpenModal] = useState<boolean>(false)
     const [open, setOpen] = useState<boolean>(false)
@@ -52,8 +57,36 @@ const UserMenu = () => {
         {isOpen && (
             <div className={`${styles.dropdown} absolute rounded-xl shadow-md w-[20rem] bg-white top-16 left-[3.5rem] text-sm`}>
                 <div className="flex flex-col cursor-pointer">
-                    <MenuItem onclick={() => setOpen(true)} label="Login" />
-                    <MenuItem onclick={() => router.push('/create-account')} label="Sign Up" />
+                    {user ? (
+                        <>
+                            <MenuItem onclick={() => router.push('/')} 
+                                label="My trips" 
+                            />
+                            <MenuItem onclick={() => router.push('/')} 
+                                label="My favourites" 
+                            />
+                            <MenuItem onclick={() => router.push('/')} 
+                                label="My reservations" 
+                            />
+                            <MenuItem onclick={() => router.push('/')} 
+                                label="My properties" 
+                            />
+                            <MenuItem onclick={() => router.push('/')} 
+                                label="Airbnb my home" 
+                            />
+                            <hr />
+                            <MenuItem onclick={() => handleLogout()}
+                                label="Logout" 
+                            />
+                        </>
+                    ) : (
+                        <>
+                            <MenuItem onclick={() => router.push('/login')} label="Login" />
+                            <MenuItem onclick={() => router.push('/create-account')} 
+                                label="Sign Up" 
+                            />
+                        </>
+                    )}
                 </div>
             </div>
         )}
