@@ -118,7 +118,26 @@
     .sign_in_body {
         width: 100%;
     }
+    .header h3 {
+        font-size: 2rem;
+        line-height: 2.4rem;
+    }
+    .header p {
+        font-size: 1.4rem;
+        line-height: 2rem;
+    }
     .sign_in_container {
         margin-top: 0;
+    }
+}
+
+@media screen and (max-width: 485px) {
+    .header h3 {
+        font-size: 1.6rem;
+        line-height: 2rem;
+    }
+    .header p {
+        font-size: 1.2rem;
+        line-height: 1.6rem;
     }
 }

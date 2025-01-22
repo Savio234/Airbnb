@@ -39,8 +39,8 @@ const SignUp = () => {
 
       <div className={styles.sign_in_body}>
         <div className={`${styles.header}`}>
-          <h3 className='xl: text-[3.2rem] font-bold md: text-[2.4rem]'>Welcome to Airbnb</h3>
-          <p className='xl: font-light text-[2rem] text-neutral-500 md: text-[1.8rem]'>Create an account</p>
+          <h3 className='xl: text-[3.2rem] font-bold'>Welcome to Airbnb</h3>
+          <p className='xl: font-light text-[2rem] text-neutral-500'>Create an account</p>
         </div>
 
         <form className={styles.form} onSubmit={handleSubmit(handleRegister)}>
