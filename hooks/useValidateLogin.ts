@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from "react-hot-toast";
 import { LoginData } from '@/interface/auth';
 import { useRouter } from 'next/navigation';
+import { signIn } from 'next-auth/react';
 
 const useValidateLogin = () => {
 
@@ -21,6 +22,7 @@ const useValidateLogin = () => {
   })
 
   const [data, setData] = useState<any>()
+  const [loading, setIsLoading] = useState<boolean>(false);
 
   const handleLogin = async (data: LoginData) => {
     console.log(data);
@@ -41,13 +43,33 @@ const useValidateLogin = () => {
     reset();
   }
 
+  const handleSignIn = (data: LoginData) => {
+    console.log(data);
+    setIsLoading(true)
+    signIn('credentials', {
+      ...data,
+      redirect: false
+    }).then((callback: any) => {
+      setIsLoading(false);
+      if (callback?.ok) {
+        toast.success('Login successful!');
+        router.refresh();
+        router.push('/');
+      }
+      if (callback?.error) {
+        toast.error(callback?.error);
+      }
+    })
+  }
+
 
   return {
     errors,
     handleLogin,
     handleSubmit,
     data,
-    register
+    register,
+    handleSignIn
   }
 }
 

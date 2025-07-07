@@ -9,9 +9,8 @@ import Image from 'next/image';
 import styles from './Login.module.css'
 
 const Login = () => {
-
   const [inputValues, setInputValues] = useState<any>({passwordInput: '', emailInput: ''})
-  const { errors, register, handleLogin, handleSubmit } = useValidateLogin()
+  const { errors, register, handleLogin, handleSubmit, handleSignIn } = useValidateLogin()
   const handleChange = (e: any) => {
     setInputValues((prevValues: any) => ({
       ...prevValues,
@@ -43,7 +42,7 @@ const Login = () => {
           </p>
         </div>
 
-        <form className={styles.form} onSubmit={handleSubmit(handleLogin)}>
+        <form className={styles.form} onSubmit={handleSubmit(handleSignIn)}>
           <div className={styles.input_field}>
             <InputField onChange={handleChange} name='email' label='Email' required 
               placeholder='Enter your email address' register={register('email')} 
