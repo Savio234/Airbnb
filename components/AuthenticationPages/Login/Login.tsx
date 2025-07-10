@@ -36,8 +36,8 @@ const Login = () => {
 
       <div className={styles.sign_in_body}>
         <div className={`${styles.header}`}>
-          <h3 className='xl: text-[3.2rem] font-bold md: text-[2.4rem]'>Welcome back</h3>
-          <p className='xl: font-light text-[2rem] text-neutral-500 md: text-[1.8rem]'>
+          <h3 className='xl: text-[3.2rem] font-bold md:text-[2.4rem]'>Welcome back</h3>
+          <p className='xl: font-light text-[2rem] text-neutral-500 md:text-[1.8rem]'>
             Login into your account
           </p>
         </div>
